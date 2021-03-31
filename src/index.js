@@ -23,7 +23,7 @@ class App extends React.Component {
         {worldMap.map((line) => (
           <tr>
             {line.map((column) => (
-              <td>{column}</td>
+             <td>{column}</td>
             ))}
           </tr>
         ))}
