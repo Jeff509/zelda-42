@@ -20,7 +20,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-            {loader :'babel-loader'},
+            {
+              loader :'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            },
             {loader :'eslint-loader',
               options: {
                 failOnError: true,
@@ -32,9 +37,18 @@ module.exports = {
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
         ]
-      }
+      }, {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+            }
+          },
+        ],
+      },
     ]
   },
   devServer: {
@@ -45,6 +59,6 @@ module.exports = {
   },
   plugins: [
     htmlWebpackPlugin,
-    miniCssExtractPlugin
+    miniCssExtractPlugin,
   ]
 }

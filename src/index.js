@@ -1,42 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
-import './index.scss';
+import store from './store';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      worldMap: [
-        [1, 1, 1, 1],
-        [1, 1, 1, 1],
-        [1, 1, 1, 1],
-        [1, 1, 1, 1]
-      ]
-    };
-  }
+import Game from './components/game';
 
-  world() {
-    const { worldMap } = this.state;
-    return (
-      <table>
-        {worldMap.map((line) => (
-          <tr>
-            {line.map((column) => (
-             <td>{column}</td>
-            ))}
-          </tr>
-        ))}
-      </table>
-    );
-  }
-
-  render() {
-    return this.world();
-  }
-}
+import './assets/css/index.css';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('app')
+  <Provider store={store}>
+    <Game />
+  </Provider>,
+  document.getElementById('app'),
 );
