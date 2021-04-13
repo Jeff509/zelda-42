@@ -1,1 +1,1 @@
-# Zelda-42
+# zelda-in-sinnoh
